@@ -16,31 +16,31 @@ export default function Login({ navigation }) {
         style={styles.backgroundImage}
       />
       <View style={styles.container2}>
-        <Text style={styles.label}>LOGIN</Text>
+          <Text style={styles.label}>LOGIN</Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Email:</Text>
-          <TextInput style={styles.input} placeholder="Digite seu email" />
-        </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Email:</Text>
+            <TextInput style={styles.input} placeholder="Digite seu email" />
+          </View>
 
-        <View style={styles.inputContainer2}>
-          <Text style={styles.inputLabel}>Senha:</Text>
-          <TextInput style={styles.input} placeholder="Digite sua senha" />
-        </View>
-        <View style={styles.linkContainer}>
-          <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-            <Text style={styles.blueText}>Crie uma</Text>
+          <View style={styles.inputContainer2}>
+            <Text style={styles.inputLabel}>Senha:</Text>
+            <TextInput style={styles.input} placeholder="d" />
+          </View>
+          <View style={styles.linkContainer}>
+            <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+              <Text style={styles.blueText}>Crie uma</Text>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Dashboard")}
+          >
+            <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Dashboard")}
-        >
-          <Text style={styles.buttonText}>Entrar</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -49,18 +49,24 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
   },
+
   backgroundImage: {
     width: "100%",
+    
   },
   container2: {
     backgroundColor: "#A52A2A",
-    borderRadius: 200,
-    width: "100%",
+    borderRadius: 500,
+    width: "135%",
     height: "100%",
-    padding: 50,
-    marginTop: "85%",
-    position: "absolute",
+    paddingBottom: 60,
+    padding: 30,
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: "100%",
+    position: 'absolute'
   },
+  
   label: {
     fontSize: 50,
     fontWeight: "bold",
@@ -75,18 +81,21 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     marginBottom: 5,
+    width: "65%",
     color: "white",
+    alignSelf: 'center'
   },
   input: {
-    width: "100%",
+    width: "65%",
     height: 50,
     borderRadius: 10,
     paddingLeft: 10,
     backgroundColor: "white",
+    alignSelf: 'center',
   },
   button: {
     backgroundColor: "#000",
-    width: "60%",
+    width: "30%",
     opacity: 0.7,
     padding: 15,
     borderRadius: 10,
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
   linkContainer: {
     flexDirection: "row",
-    alignSelf: "flex-end",
+    marginLeft: 190,
     marginTop: 10,
   },
   linkText: {

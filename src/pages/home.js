@@ -17,7 +17,7 @@ const Home = ({ navigation }) => {
       <Image source={require("../images/logo.png")} style={styles.image} />
       <Text style={styles.text}>SteakTalk</Text>
       <Text style={styles.subtext}>
-        Alguém coloca algum texto aqui, estou sem criatividade
+         welcome to the world of barbecue recipes.
       </Text>
       <TouchableOpacity
         style={styles.button}
