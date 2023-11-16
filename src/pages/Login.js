@@ -16,31 +16,31 @@ export default function Login({ navigation }) {
         style={styles.backgroundImage}
       />
       <View style={styles.container2}>
-          <Text style={styles.label}>LOGIN</Text>
+        <Text style={styles.label}>LOGIN</Text>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Email:</Text>
-            <TextInput style={styles.input} placeholder="Digite seu email" />
-          </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>Email:</Text>
+          <TextInput style={styles.input} placeholder="Digite seu email" />
+        </View>
 
-          <View style={styles.inputContainer2}>
-            <Text style={styles.inputLabel}>Senha:</Text>
-            <TextInput style={styles.input} placeholder="d" />
-          </View>
-          <View style={styles.linkContainer}>
-            <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <Text style={styles.blueText}>Crie uma</Text>
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("Dashboard")}
-          >
-            <Text style={styles.buttonText}>Entrar</Text>
+        <View style={styles.inputContainer2}>
+          <Text style={styles.inputLabel}>Senha:</Text>
+          <TextInput style={styles.input} placeholder="dick" />
+        </View>
+        <View style={styles.linkContainer}>
+          <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+            <Text style={styles.blueText}>Crie uma</Text>
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Dashboard")}
+        >
+          <Text style={styles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -52,21 +52,21 @@ const styles = StyleSheet.create({
 
   backgroundImage: {
     width: "100%",
-    
+
   },
   container2: {
     backgroundColor: "#A52A2A",
     borderRadius: 500,
     width: "135%",
     height: "100%",
-    paddingBottom: 60,
+    paddingBottom: 100,
     padding: 30,
     justifyContent: "center",
     alignSelf: "center",
     marginTop: "100%",
     position: 'absolute'
   },
-  
+
   label: {
     fontSize: 50,
     fontWeight: "bold",
