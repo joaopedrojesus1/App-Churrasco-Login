@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -6,13 +6,20 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  KeyboardAvoidingView,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function Login({ navigation }) {
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView
+      style={styles.container}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      contentContainerStyle={styles.scrollViewContainer}
+      scrollEnabled={false}
+    >
       <Image
-        source={require("../images/imagefundo.png")} // Substitua pelo caminho da sua imagem de fundo
+        source={require("../images/fundochurras2.webp")}
         style={styles.backgroundImage}
       />
       <View style={styles.container2}>
@@ -41,29 +48,32 @@ export default function Login({ navigation }) {
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    flex: 1
   },
 
   backgroundImage: {
-    width: "100%",
+    width: '100%'
 
+  },
+  scrollViewContainer: {
+    flexGrow: 1
   },
   container2: {
     backgroundColor: "#A52A2A",
     borderRadius: 500,
     width: "135%",
     height: "100%",
-    paddingBottom: 100,
+    paddingBottom: 190,
     padding: 30,
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: "100%",
+    marginTop: "90%",
     position: 'absolute'
   },
 
