@@ -32,7 +32,7 @@ export default function Login({ navigation }) {
 
         <View style={styles.inputContainer2}>
           <Text style={styles.inputLabel}>Senha:</Text>
-          <TextInput style={styles.input} placeholder="dick" />
+          <TextInput style={styles.input} placeholder="Digite a Senha" />
         </View>
         <View style={styles.linkContainer}>
           <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 12,
     marginBottom: 15,
+    textAlign:'center',
   },
   blueText: {
     color: "cyan",
