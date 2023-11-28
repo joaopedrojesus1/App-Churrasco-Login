@@ -58,22 +58,23 @@ const styles = StyleSheet.create({
   },
 
   backgroundImage: {
-    width: '100%'
+    width: '100%',
+    height: '100%'
 
   },
   scrollViewContainer: {
     flexGrow: 1
   },
+
   container2: {
     backgroundColor: "#A52A2A",
     borderRadius: 500,
-    width: "135%",
-    height: "100%",
-    paddingBottom: 190,
+    width: "150%",
+    height: "70%",
+    marginTop:'50%',
     padding: 30,
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: "90%",
     position: 'absolute'
   },
 

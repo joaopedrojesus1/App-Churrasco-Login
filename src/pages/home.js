@@ -6,7 +6,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Video
-        source={require("../videos/Videochurrasco.mp4")} // Substitua pelo caminho do seu vídeo
+        source={require("../videos/Videochurrasco.mp4")} 
         style={StyleSheet.absoluteFill}
         isLooping
         isMuted
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "white", 
-    opacity: 0.7
+    opacity: 0.5
   },
   image: {
     width: 200,

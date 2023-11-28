@@ -6,6 +6,7 @@ import Login from './src/pages/Login';
 import SignUp from './src/pages/Cadastro';
 import Home from './src/pages/home';
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
