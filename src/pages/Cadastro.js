@@ -49,9 +49,9 @@ export default function SignUp({ navigation }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => navigation.navigate("Receitas")}
         >
-          <Text style={styles.buttonText}>Entrar</Text>
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

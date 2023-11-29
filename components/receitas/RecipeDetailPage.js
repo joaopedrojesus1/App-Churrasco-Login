@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     borderRadius: 5,
-    
   },
   divIngredientes: {
     backgroundColor: '#A52A2A',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, StatusBar, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
-import RecipeListPage from '../components/receitas/RecipeListPage';
-import RecipeDetailPage from '../components/receitas/RecipeDetailPage';
+import RecipeListPage from '../../components/receitas/RecipeListPage';
+import RecipeDetailPage from '../../components/receitas/RecipeDetailPage';
 
 const ModalContainer = ({ children }) => {
   return (

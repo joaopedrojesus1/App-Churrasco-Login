@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
+
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => navigation.navigate("Receitas")}
         >
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
