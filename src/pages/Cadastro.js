@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,11 +6,26 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function SignUp({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = async () => {
+    try {
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      // Novo usuário criado com sucesso
+      alert("Usuário criado com sucesso!");
+      // Redirecionar para a página de login ou qualquer outra página necessária
+      navigation.navigate("Login");
+    } catch (error) {
+      alert("Ocorreu um erro ao criar o usuário. Tente novamente.");
+      console.error(error);
+    }
+  };
+
   return (
     <KeyboardAwareScrollView
       style={styles.container}
@@ -23,35 +38,38 @@ export default function SignUp({ navigation }) {
         style={styles.backgroundImage}
       />
       <View style={styles.container2}>
-        <Text style={styles.label}>CADASTRE-SE</Text>
+        <Text style={styles.label}>Cadastre-se</Text>
 
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Email:</Text>
-          <TextInput style={styles.input} placeholder="Digite seu email" />
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
         </View>
 
-        <View style={styles.inputContainer}>
+        <View style={styles.inputContainer2}>
           <Text style={styles.inputLabel}>Senha:</Text>
-          <TextInput style={styles.input} placeholder="Digite a Senha" />
-        </View>
-        
-        <View style={styles.inputContaine2}>
-          <Text style={styles.inputLabel}>Confirmar Senha:</Text>
-          <TextInput style={styles.input} placeholder="Confirme a Senha" />
+          <TextInput
+            style={styles.input}
+            placeholder="Digite a Senha"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry={true} // Para esconder a senha enquanto é digitada
+          />
         </View>
 
         <View style={styles.linkContainer}>
-          <Text style={styles.linkText}>Já tem uma conta? </Text>
+          <Text style={styles.linkText}>Já tem uma conta?</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={styles.blueText}>Logar</Text>
+            <Text style={styles.blueText}> Logar</Text>
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Receitas")}
-        >
-          <Text style={styles.buttonText}>Cadastrar</Text>
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+          <Text style={styles.buttonText}>Criar Conta</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>
@@ -60,31 +78,28 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
-
   backgroundImage: {
-    width: '100%'
-
+    width: "100%",
+    height: "100%",
   },
   scrollViewContainer: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   container2: {
     backgroundColor: "#A52A2A",
     borderRadius: 500,
-    width: "135%",
-    height: "100%",
-    paddingBottom: 190,
+    width: "150%",
+    height: "70%",
+    marginTop: "50%",
     padding: 30,
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: "80%",
-    position: 'absolute'
+    position: "absolute",
   },
-
   label: {
-    fontSize: 45,
+    fontSize: 50,
     fontWeight: "bold",
     marginBottom: 20,
     color: "white",
@@ -93,13 +108,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 15,
   },
-
   inputLabel: {
     fontSize: 16,
     marginBottom: 5,
     width: "65%",
     color: "white",
-    alignSelf: 'center'
+    alignSelf: "center",
   },
   input: {
     width: "65%",
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 10,
     backgroundColor: "white",
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   button: {
     backgroundColor: "#000",
@@ -131,7 +145,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 12,
     marginBottom: 15,
-    textAlign:'center',
+    textAlign: "center",
   },
   blueText: {
     color: "cyan",

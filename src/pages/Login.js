@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,11 +6,24 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function Login({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    // Verificação básica - Aqui você pode implementar a lógica de login
+    if (email === "user@example.com" && password === "password") {
+      // Se as credenciais forem válidas, redireciona para a próxima tela (Receitas)
+      navigation.navigate("Receitas");
+    } else {
+      // Caso contrário, você pode exibir uma mensagem de erro, por exemplo.
+      alert("Credenciais inválidas. Tente novamente.");
+    }
+  };
+
   return (
     <KeyboardAwareScrollView
       style={styles.container}
@@ -27,13 +40,25 @@ export default function Login({ navigation }) {
 
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Email:</Text>
-          <TextInput style={styles.input} placeholder="Digite seu email" />
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
         </View>
 
         <View style={styles.inputContainer2}>
           <Text style={styles.inputLabel}>Senha:</Text>
-          <TextInput style={styles.input} placeholder="Digite a Senha" />
+          <TextInput
+            style={styles.input}
+            placeholder="Digite a Senha"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry={true} // Para esconder a senha enquanto é digitada
+          />
         </View>
+
         <View style={styles.linkContainer}>
           <Text style={styles.linkText}>Ainda não tem uma conta? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
@@ -41,10 +66,7 @@ export default function Login({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Receitas")}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
       </View>
@@ -54,30 +76,26 @@ export default function Login({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
-
   backgroundImage: {
-    width: '100%',
-    height: '100%'
-
+    width: "100%",
+    height: "100%",
   },
   scrollViewContainer: {
-    flexGrow: 1
+    flexGrow: 1,
   },
-
   container2: {
     backgroundColor: "#A52A2A",
     borderRadius: 500,
     width: "150%",
     height: "70%",
-    marginTop:'50%',
+    marginTop: "50%",
     padding: 30,
     justifyContent: "center",
     alignSelf: "center",
-    position: 'absolute'
+    position: "absolute",
   },
-
   label: {
     fontSize: 50,
     fontWeight: "bold",
@@ -88,13 +106,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 15,
   },
-
   inputLabel: {
     fontSize: 16,
     marginBottom: 5,
     width: "65%",
     color: "white",
-    alignSelf: 'center'
+    alignSelf: "center",
   },
   input: {
     width: "65%",
@@ -102,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 10,
     backgroundColor: "white",
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   button: {
     backgroundColor: "#000",
@@ -126,7 +143,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 12,
     marginBottom: 15,
-    textAlign:'center',
+    textAlign: "center",
   },
   blueText: {
     color: "cyan",
