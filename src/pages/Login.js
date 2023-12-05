@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SQLite from 'react-native-quick-sqlite';
+const db = SQLite.openDatabase("../../bd.sqlite");
 import {
   View,
   Text,
@@ -9,20 +11,29 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const handleLogin = () => {
     // Verificação básica - Aqui você pode implementar a lógica de login
-    if (email === "user@example.com" && password === "password") {
-      // Se as credenciais forem válidas, redireciona para a próxima tela (Receitas)
-      navigation.navigate("Receitas");
-    } else {
-      // Caso contrário, você pode exibir uma mensagem de erro, por exemplo.
-      alert("Credenciais inválidas. Tente novamente.");
-    }
-  };
+    db.transaction((tx) => {
+      tx.executeSql(
+        "SELECT * FROM usuarios WHERE email = ? AND senha_hash = ?",
+        [email, password],
+        (_, { rows }) => {
+          if (rows.length > 0) {
+            // Se as credenciais forem válidas, redireciona para a próxima tela (Receitas)
+            navigation.navigate("Receitas");
+          } else {
+            // Caso contrário, você pode exibir uma mensagem de erro, por exemplo.
+            alert("Credenciais inválidas. Tente novamente.");
+          }
+        }
+      );
+    });
+ };
 
   return (
     <KeyboardAwareScrollView

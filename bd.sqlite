@@ -1,0 +1,15 @@
+import SQLite from 'react-native-quick-sqlite';
+const db = SQLite.openDatabase("../../bd.sqlite");
+
+db.transaction(tx => {
+tx.executeSql(
+   'CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, senha_hash TEXT NOT NULL);',
+   [],
+   (tx, results) => {
+     console.log('usuarios table created successfully');
+   },
+   (tx, error) => {
+     console.log('Error: ', error);
+   }
+);
+});
