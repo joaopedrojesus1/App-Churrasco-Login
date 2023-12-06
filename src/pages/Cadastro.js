@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../services/FirebaseConfig"
 import {
   View,
   Text,
@@ -13,17 +15,22 @@ export default function SignUp({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignUp = async () => {
-    try {
-      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-      // Novo usuário criado com sucesso
-      alert("Usuário criado com sucesso!");
-      // Redirecionar para a página de login ou qualquer outra página necessária
-      navigation.navigate("Login");
-    } catch (error) {
-      alert("Ocorreu um erro ao criar o usuário. Tente novamente.");
-      console.error(error);
-    }
+  const handleSignUp = () => {
+  
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        
+        console.log(user);
+        navigation.navigate("Login");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert("Credenciais inválidas. Tente novamente.");
+        console.log(errorMessage)
+      });
   };
 
   return (
