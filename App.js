@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Button, View } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/pages/Login';
 import SignUp from './src/pages/Cadastro';
@@ -19,8 +19,8 @@ export default function App() {
         <Stack.Screen
           name="Receitas"
           component={Receitas}
-          options={{
-            headerRight: () => <Button title="Logout" color="#A52A2A" />,
+          options={({ navigation }) => ({
+            headerRight: () => <LogoutButton navigation={navigation} />,
             headerStyle: {
               backgroundColor: '#A52A2A', // Defina a cor de fundo desejada
             },
@@ -28,9 +28,26 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-          }}
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+// Componente do botão de logout
+const LogoutButton = ({ navigation }) => {
+  const navigateToLogin = () => {
+    navigation.navigate('Login'); // Redireciona para a tela de Login
+  };
+
+  return (
+    <View style={{ marginRight: 10 }}>
+      <Button
+        title="Logout"
+        onPress={navigateToLogin}
+        color={'#A52A2A'}
+      />
+    </View>
+  );
+};

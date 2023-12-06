@@ -17,7 +17,7 @@ const Home = ({ navigation }) => {
       <Image source={require("../images/logo.png")} style={styles.image} />
       <Text style={styles.text}>SteakTalk</Text>
       <Text style={styles.subtext}>
-         welcome to the world of barbecue recipes.
+        bem-vindo ao mundo das receitas de churrasco.
       </Text>
       <TouchableOpacity
         style={styles.button}
@@ -29,7 +29,7 @@ const Home = ({ navigation }) => {
         style={styles.button2}
         onPress={() => navigation.navigate("SignUp")}
       >
-        <Text style={styles.buttonText2}>Sign Up</Text>
+        <Text style={styles.buttonText2}>Cadastre-se</Text>
       </TouchableOpacity>
       {/* Adicione outras informações ou elementos aqui, se necessário */}
     </View>

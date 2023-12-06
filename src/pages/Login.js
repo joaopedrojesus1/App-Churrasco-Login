@@ -8,18 +8,23 @@ import {
   Image,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Verificação básica - Aqui você pode implementar a lógica de login
-    if (email === "user@example.com" && password === "password") {
-      // Se as credenciais forem válidas, redireciona para a próxima tela (Receitas)
+  const auth = getAuth();
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("Usuário logado:", userCredential.user.uid);
+      alert("Usuário logado");
+      // Navegar para a próxima tela ou fazer outras operações após o login bem-sucedido
       navigation.navigate("Receitas");
-    } else {
-      // Caso contrário, você pode exibir uma mensagem de erro, por exemplo.
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
       alert("Credenciais inválidas. Tente novamente.");
     }
   };
