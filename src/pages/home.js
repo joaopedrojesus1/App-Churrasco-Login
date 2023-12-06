@@ -14,8 +14,8 @@ const Home = ({ navigation }) => {
         resizeMode="cover"
       />
       <View style={styles.overlay} />
-      <Image source={require("../images/logo.png")} style={styles.image} />
-      <Text style={styles.text}>SteakTalk</Text>
+      <Image source={require("../images/GrillFusion.png")} style={styles.image} />
+      <Text style={styles.text}>GrillFusion</Text>
       <Text style={styles.subtext}>
         bem-vindo ao mundo das receitas de churrasco.
       </Text>

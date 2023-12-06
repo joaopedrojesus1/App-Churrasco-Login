@@ -71,7 +71,7 @@ export default function SignUp({ navigation }) {
         <View style={styles.linkContainer}>
           <Text style={styles.linkText}>Já tem uma conta?</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={styles.blueText}> Logar</Text>
+            <Text style={styles.blueText}>Logar</Text>
           </TouchableOpacity>
         </View>
 
